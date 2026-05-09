@@ -13,7 +13,6 @@ public class Cliente {
         this.cpf = cpf;
         this.temDivida = temDivida;
     }
-
     // pega o nome do cliente
     public String getNome() { 
         return nome;
