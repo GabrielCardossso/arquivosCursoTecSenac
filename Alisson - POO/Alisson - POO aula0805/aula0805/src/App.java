@@ -1,5 +1,7 @@
 // importar a classe Scanner para ler a entrada do usuário
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 // classe App principal do programa
 public class App {
     public static void main(String[] args) throws Exception {
@@ -15,9 +17,15 @@ public class App {
 
 
 // pegando o nome e a idade e informando se a pessoa tem divida da pessoa1 e exibindo na tela
-        System.out.println("Nome: " + pessoa1.getNome() + "\nIdade: " + pessoa1.getIdade() + "\nPode comprar fiado? " + pessoa1.podeComprarFiado());
+        // - System.out.println("Nome: " + pessoa1.getNome() + "\nIdade: " + pessoa1.getIdade() + "\nPode comprar fiado? " + pessoa1.podeComprarFiado());
         // exibindo os dados da pessoa2
-        System.out.println("Nome: " + pessoa2.getNome() + "\nIdade: " + pessoa2.getIdade() + "\nPode comprar fiado? " + pessoa2.podeComprarFiado());
-    scanner.close();
+        // - System.out.println("Nome: " + pessoa2.getNome() + "\nIdade: " + pessoa2.getIdade() + "\nPode comprar fiado? " + pessoa2.podeComprarFiado());
+        
+        // Criando um arraylist para guardar nomes
+        List<Pessoa> listaPessoas = new ArrayList<>();
+        listaPessoas.add(pessoa1);
+        listaPessoas.add(pessoa2);
+        System.out.println(listaPessoas.get(0));
+        scanner.close();
 }
 }
