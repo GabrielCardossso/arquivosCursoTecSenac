@@ -18,10 +18,16 @@ Repositório dedicado aos conteúdos, exercícios e projetos desenvolvidos duran
 
 ---
 
-## 🛠️ Tecnologias utilizadas
+## 🛠️ Tecnologias e Ferramentas
 
-<p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,java,postgres,git,github,vscode" />
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=java,postgres,git,github,vscode" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/VisualG-00599C?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Portugol-4B0082?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cursor-111827?style=for-the-badge&logoColor=white" />
 </p>
 
 ---
