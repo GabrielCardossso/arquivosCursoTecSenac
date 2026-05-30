@@ -1,0 +1,46 @@
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,100:0066FF&height=120&section=header&text=Téc.%20Dev.%20de%20Sistemas&fontSize=30&fontColor=ffffff&animation=fadeIn"/>
+
+<h1 align="center">📚 arquivosCursoTecSenac</h1>
+
+<p align="center">
+Repositório dedicado aos conteúdos, exercícios e projetos desenvolvidos durante o curso Técnico em Desenvolvimento de Sistemas no SENAC.
+</p>
+
+---
+
+## 🚀 Sobre o repositório
+
+📖 Atividades desenvolvidas em sala de aula  
+💻 Exercícios práticos de programação  
+🗄️ Estudos envolvendo banco de dados e modelagem  
+☕ Projetos utilizando Java, JavaScript, HTML e CSS  
+📚 Conteúdos aprendidos durante o curso técnico  
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+<p>
+  <img src="https://skillicons.dev/icons?i=html,css,js,java,postgres,git,github,vscode" />
+</p>
+
+---
+
+## 📂 Conteúdos
+
+📌 Programação Orientada a Objetos (POO)  
+📌 Lógica de Programação  
+📌 Banco de Dados  
+📌 Desenvolvimento Web  
+📌 Estruturas e conceitos de programação 
+📌 Levantamento de Requisitos
+
+---
+
+## 🎯 Objetivo
+
+Este repositório tem como objetivo armazenar minha evolução durante o curso técnico, reunindo práticas, exercícios e projetos desenvolvidos ao longo das aulas.
+
+---
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00BFFF,100:0066FF&height=120&section=footer"/>
