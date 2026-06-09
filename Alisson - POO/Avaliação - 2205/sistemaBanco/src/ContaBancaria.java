@@ -18,7 +18,7 @@ public class ContaBancaria {
     }
 
     public void setTitular(String titular) {
-        if (titular == "" || titular == null) {
+        if (titular == "" || titular.trim().isEmpty()) { // corrigido a segunda condição usando métodos prontos
             System.out.println("ERRO: Nome do titular inválido.");
         } else {
             this.titular = titular;
