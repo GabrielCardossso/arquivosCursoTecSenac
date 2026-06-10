@@ -46,95 +46,11 @@ public class App {
         gerenciamento.listaAgendamentos.add(a3);
         // fim da area reservada para testes
 
-        // variaveis utilitarias
-        int opcao = 0;
         
         System.out.println("Bem-Vindo ao Sistema de Agendamentos de Estética Automotiva");
         System.out.println("===========================================================");
 
-        while (opcao != 17) {
-            System.out.println("Menu: ");
-            System.out.println("1 - Cadastrar cliente");
-            System.out.println("2 - Cadastrar funcionário");
-            System.out.println("3 - Cadastrar veículo");
-            System.out.println("4 - Cadastrar serviço");
-            System.out.println("5 - Agendar um serviço");
-            System.out.println("6 - Concluir agendamento");
-            System.out.println("7 - Cancelar agendamento");
-            System.out.println("8 - Remover cliente");
-            System.out.println("9 - Remover funcionário");
-            System.out.println("10 - Remover veículo");
-            System.out.println("11 - Remover serviço");
-            System.out.println("12 - Listar clientes");
-            System.out.println("13 - Listar funcionários");
-            System.out.println("14 - Listar veículos");
-            System.out.println("15 - Listar serviços");
-            System.out.println("16 - Listar agendamentos");
-            System.out.println("17 - Sair");
-
-            System.out.println("=========================");
-
-            System.out.println("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    gerenciamento.cadastrarCliente(scanner);
-                    break;
-                case 2:
-                    gerenciamento.cadastrarFuncionario(scanner);
-                    break;
-                case 3:
-                    gerenciamento.cadastrarVeiculo(scanner);
-                    break;
-                case 4:
-                    gerenciamento.cadastrarServico(scanner);
-                    break;
-                case 5:
-                    gerenciamento.agendarServico(scanner);
-                    break;
-                case 6:
-                    gerenciamento.concluirAgendamento(scanner);
-                    break;
-                case 7:
-                    gerenciamento.cancelarAgendamento(scanner);
-                    break;
-                case 8:
-                    gerenciamento.removerCliente(scanner);
-                    break;
-                case 9:
-                    gerenciamento.removerFuncionario(scanner);
-                    break;
-                case 10:
-                    gerenciamento.removerVeiculo(scanner);
-                    break;
-                case 11:
-                    gerenciamento.removerServico(scanner);
-                    break;
-                case 12:
-                    gerenciamento.listarClientes();
-                    break;
-                case 13:
-                    gerenciamento.listarFuncionarios();
-                    break;
-                case 14:
-                    gerenciamento.listarVeiculos();
-                    break;
-                case 15:
-                    gerenciamento.listarServicos();
-                    break;
-                case 16:
-                    gerenciamento.listarAgendamentos();
-                    break;
-                case 17:
-                    System.out.println("Saindo... Até logo :)");
-                    break;
-
-                default:
-                    System.out.println("ERRO: Opção inválida.");
-                    break;
-            }
-        }
+        gerenciamento.exibirMenuPrincipal();
 
     }
 }

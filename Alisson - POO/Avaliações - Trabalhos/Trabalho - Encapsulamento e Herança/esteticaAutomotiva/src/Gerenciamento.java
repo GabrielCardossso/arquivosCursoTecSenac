@@ -251,4 +251,238 @@ public class Gerenciamento {
             System.out.println((i + 1) + " ===== " + listaAgendamentos.get(i).exibirClienteServicoStatus());
         }
     }
+
+    public void exibirMenuCadastros() {
+
+        int opcao;
+
+        do {
+
+            System.out.println("Menu - Cadastros: ");
+
+            System.out.println("1 - Cadastrar cliente");
+            System.out.println("2 - Cadastrar funcionário");
+            System.out.println("3 - Cadastrar veículo");
+            System.out.println("4 - Cadastrar serviço");
+            System.out.println("5 - Voltar");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    cadastrarCliente(scanner);
+                    break;
+                case 2:
+                    cadastrarFuncionario(scanner);
+                    break;
+                case 3:
+                    cadastrarVeiculo(scanner);
+                    break;
+                case 4:
+                    cadastrarServico(scanner);
+                    break;
+                case 5:
+                    System.out.println("Voltando...");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida");
+                    break;
+            }
+
+        } while (opcao != 5);
+
+    }
+
+    public void exibirMenuListagens() {
+
+        int opcao;
+
+        do {
+
+            System.out.println("Menu - Listagens: ");
+
+            System.out.println("1 - Listar clientes");
+            System.out.println("2 - Listar funcionários");
+            System.out.println("3 - Listar veículos");
+            System.out.println("4 - Listar serviços");
+            System.out.println("5 - Listar agendamentos");
+            System.out.println("6 - Voltar");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    listarClientes();
+                    break;
+                case 2:
+                    listarFuncionarios();
+                    break;
+                case 3:
+                    listarVeiculos();
+                    break;
+                case 4:
+                    listarServicos();
+                    break;
+                case 5:
+                    listarAgendamentos();
+                    break;
+                case 6:
+                    System.out.println("Voltando...");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida");
+                    break;
+
+            }
+
+        } while (opcao != 6);
+    }
+
+    public void exibirMenuAgendamentos() {
+
+        int opcao;
+
+        do {
+
+            System.out.println("Menu - Agendamentos: ");
+
+            System.out.println("1 - Agendar um serviço");
+            System.out.println("2 - Concluir agendamento");
+            System.out.println("3 - Cancelar agendamento");
+            System.out.println("4 - Listar agendamentos");
+            System.out.println("5 - Voltar");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    agendarServico(scanner);
+                    break;
+                case 2:
+                    concluirAgendamento(scanner);
+                    break;
+                case 3:
+                    cancelarAgendamento(scanner);
+                    break;
+                case 4:
+                    listarAgendamentos();
+                    break;
+                case 5:
+                    System.out.println("Voltando...");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida");
+                    break;
+
+            }
+
+        } while (opcao != 5);
+    }
+
+    public void exibirMenuRemocoes() {
+
+        int opcao;
+
+        do {
+
+            System.out.println("Menu - Remoções: ");
+
+            System.out.println("1 - Remover cliente");
+            System.out.println("2 - Remover funcionário");
+            System.out.println("3 - Remover veículo");
+            System.out.println("4 - Remover serviço");
+            System.out.println("5 - Voltar");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    removerCliente(scanner);
+                    break;
+                case 2:
+                    removerFuncionario(scanner);
+                    break;
+                case 3:
+                    removerVeiculo(scanner);
+                    break;
+                case 4:
+                    removerServico(scanner);
+                    break;
+                case 5:
+                    System.out.println("Voltando...");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida");
+                    break;
+
+            }
+
+        } while (opcao != 5);
+    }
+
+    public void exibirMenuPrincipal() {
+        Scanner scanner = new Scanner(System.in);
+
+        int opcao = 0;
+
+        while (opcao != 5) {
+            System.out.println("Menu: ");
+            System.out.println("1 - Cadastros");
+            System.out.println("2 - Listagens");
+            System.out.println("4 - Agendamentos");
+            System.out.println("4 - Remoções");
+            System.out.println("5 - Sair");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    exibirMenuCadastros();
+                    break;
+                case 2:
+                    exibirMenuListagens();
+                    break;
+                case 3:
+                    exibirMenuAgendamentos();
+                    break;
+                case 4:
+                    exibirMenuRemocoes();
+                    break;
+                case 5:
+                    System.out.println("=====================");
+                    System.out.println("Saindo... Até logo :)");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida.");
+                    break;
+            }
+        }
+    }
 }
