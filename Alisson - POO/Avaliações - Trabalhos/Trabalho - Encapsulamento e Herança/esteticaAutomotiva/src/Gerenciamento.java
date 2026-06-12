@@ -469,6 +469,56 @@ public class Gerenciamento {
         }
     }
 
+    // buscas
+
+    public void buscarCliente(Scanner scanner) {
+        System.out.println("Buscar Cliente");
+        System.out.println("==============");
+
+        System.out.println("Digite o nome do cliente que deseja buscar:");
+        String nomeBusca = scanner.nextLine();
+
+        boolean encontrado = false;
+
+        for (Cliente cliente : listaClientes) {
+
+            if (cliente.getNome().equalsIgnoreCase(nomeBusca)) {
+
+                System.out.println(cliente.exibirDadosCompleto());
+                encontrado = true;
+            }
+
+        }
+
+        if (!encontrado) {
+            System.out.println("ERRO: Cliente não encontrado!");
+        }
+    }
+
+    public void buscarVeiculo(Scanner scanner) {
+        System.out.println("Buscar Veículo");
+        System.out.println("==============");
+
+        System.out.println("Digite a placa: ");
+        String placaBusca = scanner.nextLine();
+
+        boolean encontrado = false;
+
+        for (Veiculo veiculo : listaVeiculos) {
+
+            if (veiculo.getPlaca().equalsIgnoreCase(placaBusca)) {
+
+                System.out.println(veiculo.exibirModeloPlacaDono());
+                encontrado = true;
+            }
+
+        }
+
+        if (!encontrado) {
+            System.out.println("ERRO: Veículo não encontrado!");
+        }
+    }
+
     // menus
 
     public void exibirMenuCadastros() {
@@ -663,18 +713,58 @@ public class Gerenciamento {
         } while (opcao != 5);
     }
 
+    public void exibirMenuBuscas() {
+
+        int opcao;
+
+        do {
+
+            System.out.println("Menu - Buscas: ");
+
+            System.out.println("1 - Buscar cliente");
+            System.out.println("2 - Buscar veículo");
+            System.out.println("3 - Voltar");
+
+            System.out.println("=========================");
+
+            System.out.println("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+                    buscarCliente(scanner);
+                    break;
+                case 2:
+                    buscarVeiculo(scanner);
+                    break;
+                case 3:
+                    System.out.println("Voltando...");
+                    break;
+                default:
+                    System.out.println("ERRO: Opção inválida");
+                    break;
+
+            }
+
+        } while (opcao != 3);
+    }
+
     public void exibirMenuPrincipal() {
         Scanner scanner = new Scanner(System.in);
 
         int opcao = 0;
 
-        while (opcao != 5) {
+        while (opcao != 6) {
             System.out.println("Menu: ");
             System.out.println("1 - Cadastros");
             System.out.println("2 - Listagens");
             System.out.println("3 - Agendamentos");
             System.out.println("4 - Remoções");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Buscas");
+            System.out.println("6 - Sair");
 
             System.out.println("=========================");
 
@@ -695,6 +785,9 @@ public class Gerenciamento {
                     exibirMenuRemocoes();
                     break;
                 case 5:
+                    exibirMenuBuscas();
+                    break;
+                case 6:
                     System.out.println("=====================");
                     System.out.println("Saindo... Até logo :)");
                     break;

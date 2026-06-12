@@ -32,12 +32,12 @@ public abstract class Pessoa {
     }
 
     public void setCpf(String cpf) {
-        if (cpf == null || cpf.trim().isEmpty()) {
-            System.out.println("ERRO: CPF inválido.");
-        } else {
-            this.cpf = cpf;
-        }
+    if (cpf == null || cpf.trim().isEmpty()) {
+        System.out.println("ERRO: CPF inválido.");
+    } else {
+        this.cpf = cpf;
     }
+}
 
     public String getTelefone() {
         return telefone;

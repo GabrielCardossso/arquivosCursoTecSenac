@@ -26,4 +26,8 @@ public class Cliente extends Pessoa {
         return "\nNome: " + getNome() + "\nCPF: " + getCpf();
     }
 
+    public String exibirDadosCompleto() {
+        return "\nNome: " + getNome() + "\nCPF: " + getCpf() + "\nTelefone: " + getTelefone() + "\nEndereço: " + endereco;
+    }
+
 }
