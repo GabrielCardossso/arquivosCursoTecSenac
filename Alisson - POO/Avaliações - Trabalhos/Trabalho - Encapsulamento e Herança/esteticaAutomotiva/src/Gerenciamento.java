@@ -11,11 +11,14 @@ public class Gerenciamento {
     List<Agendamento> listaAgendamentos = new ArrayList<>();
     List<Veiculo> listaVeiculos = new ArrayList<>();
 
+    // adicionar mais validações
+
     public void cadastrarCliente(Scanner scanner) {
         System.out.println("Cadastro de Cliente");
         System.out.println("===================");
 
         System.out.println("Digite o nome: ");
+        
         String nomeDigitado = scanner.nextLine();
 
         System.out.println("Digite o CPF: ");
@@ -27,9 +30,20 @@ public class Gerenciamento {
         System.out.println("Digite o endereço: ");
         String enderecoDigitado = scanner.nextLine();
 
-        Cliente cliente = new Cliente(nomeDigitado, cpfDigitado, telefoneDigitado, enderecoDigitado);
-        listaClientes.add(cliente);
-        System.out.println("Cadastro de Cliente Concluído.");
+        System.out.println("====================");
+        System.out.println("Deseja concluir o cadastro?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.println("====================");
+        int cadastrarSimNao = scanner.nextInt();
+        if (cadastrarSimNao == 1) {
+            Cliente cliente = new Cliente(nomeDigitado, cpfDigitado, telefoneDigitado, enderecoDigitado);
+            listaClientes.add(cliente);
+            System.out.println("Cadastro concluído.");
+        } else {
+            System.out.println("Cadastro cancelado.");
+        }
     }
 
     public void cadastrarFuncionario(Scanner scanner) {
@@ -51,10 +65,22 @@ public class Gerenciamento {
         System.out.println("Digite o salário: ");
         double salarioDigitado = scanner.nextDouble();
 
-        Funcionario funcionario = new Funcionario(nomeDigitado, cpfDigitado, telefoneDigitado, cargoDigitado,
-                salarioDigitado);
-        listaFuncionarios.add(funcionario);
-        System.out.println("Cadastro de Funcionário Concluído.");
+        System.out.println("====================");
+        System.out.println("Deseja concluir o cadastro?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.println("====================");
+        int cadastrarSimNao = scanner.nextInt();
+
+        if (cadastrarSimNao == 1) {
+            Funcionario funcionario = new Funcionario(nomeDigitado, cpfDigitado, telefoneDigitado, cargoDigitado, salarioDigitado);
+            listaFuncionarios.add(funcionario);
+        
+            System.out.println("Cadastro concluído.");
+        } else {
+            System.out.println("Cadastro cancelado.");
+        }
     }
 
     public void cadastrarVeiculo(Scanner scanner) {
@@ -75,9 +101,21 @@ public class Gerenciamento {
         int opcaoCliente = scanner.nextInt();
         Cliente clienteSelecionado = listaClientes.get(opcaoCliente - 1);
 
-        Veiculo veiculo = new Veiculo(marcaDigitada, modeloDigitado, placaDigitada, clienteSelecionado);
-        listaVeiculos.add(veiculo);
-        System.out.println("Cadastro de Veículo Concluído.");
+        System.out.println("====================");
+        System.out.println("Deseja concluir o cadastro?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.println("====================");
+        int cadastrarSimNao = scanner.nextInt();
+
+        if (cadastrarSimNao == 1) {
+            Veiculo veiculo = new Veiculo(marcaDigitada, modeloDigitado, placaDigitada, clienteSelecionado);
+            listaVeiculos.add(veiculo);
+            System.out.println("Cadastro concluído.");
+        } else {
+            System.out.println("Cadastro cancelado.");
+        }
     }
 
     public void cadastrarServico(Scanner scanner) {
@@ -96,9 +134,21 @@ public class Gerenciamento {
         System.out.println("Digite a duração (em minutos): ");
         int duracaoDigitada = scanner.nextInt();
 
-        Servico servico = new Servico(nomeDigitado, descricaoDigitada, precoDigitado, duracaoDigitada);
-        listaServicos.add(servico);
-        System.out.println("Cadastro de Cliente Concluído.");
+        System.out.println("====================");
+        System.out.println("Deseja concluir o cadastro?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.println("====================");
+        int cadastrarSimNao = scanner.nextInt();
+
+        if (cadastrarSimNao == 1) {
+            Servico servico = new Servico(nomeDigitado, descricaoDigitada, precoDigitado, duracaoDigitada);
+            listaServicos.add(servico);
+            System.out.println("Cadastro concluído.");
+        } else {
+            System.out.println("Cadastro cancelado.");
+        }
     }
 
     public void agendarServico(Scanner scanner) {
@@ -122,6 +172,7 @@ public class Gerenciamento {
         System.out.println("Qual o servço? ");
         listarServicos();
         int opcaoServico = scanner.nextInt();
+        scanner.nextLine();
         Servico servicoSelecionado = listaServicos.get(opcaoServico - 1);
 
         String statusPadrao = "Pendente";
@@ -132,9 +183,22 @@ public class Gerenciamento {
         System.out.println("Informe um horário (hh:mm): ");
         String horarioDigitado = scanner.nextLine();
 
-        Agendamento agendamento = new Agendamento(clienteSelecionado, veiculoSelecionado, servicoSelecionado,
-                statusPadrao, horarioDigitado, dataDigitada);
-        listaAgendamentos.add(agendamento);
+        System.out.println("====================");
+        System.out.println("Deseja concluir o cadastro?");
+        System.out.println("1 - Sim");
+        System.out.println("2 - Não");
+
+        System.out.println("====================");
+        int cadastrarSimNao = scanner.nextInt();
+        
+        if (cadastrarSimNao == 1) {
+            Agendamento agendamento = new Agendamento(clienteSelecionado, veiculoSelecionado, servicoSelecionado,
+                    statusPadrao, horarioDigitado, dataDigitada);
+            listaAgendamentos.add(agendamento);
+            System.out.println("Cadastro concluído.");
+        } else {
+            System.out.println("Cadastro cancelado.");
+        }
     }
 
     public void concluirAgendamento(Scanner scanner) {
@@ -207,12 +271,19 @@ public class Gerenciamento {
         System.out.println("Serviço removido!");
     }
 
+    // adicionar um if else nas listagens, caso a lista esteja vazia,
+    // if(listaDados.isEmpty()) - mostrar erro, else - mostrar os dados
+
     public void listarClientes() {
         System.out.println("Lista de clientes cadastrados: ");
         System.out.println("===============================");
 
-        for (int i = 0; i < listaClientes.size(); i++) {
-            System.out.println((i + 1) + " ===== " + listaClientes.get(i).exibirNomeCpf());
+        if (listaClientes.isEmpty()) {
+            System.out.println("ERRO: Nenhum cliente cadastrado!");
+        } else {
+            for (int i = 0; i < listaClientes.size(); i++) {
+                System.out.println((i + 1) + " ===== " + listaClientes.get(i).exibirNomeCpf());
+            }
         }
     }
 
@@ -220,8 +291,12 @@ public class Gerenciamento {
         System.out.println("Lista de funcionários cadastrados: ");
         System.out.println("===================================");
 
-        for (int i = 0; i < listaFuncionarios.size(); i++) {
-            System.out.println((i + 1) + " ===== " + listaFuncionarios.get(i).exibirNomeCpf());
+        if (listaFuncionarios.isEmpty()) {
+            System.out.println("ERRO: Nenhum funcionário cadastrado!");
+        } else {
+            for (int i = 0; i < listaFuncionarios.size(); i++) {
+                System.out.println((i + 1) + " ===== " + listaFuncionarios.get(i).exibirNomeCpf());
+            }
         }
     }
 
@@ -229,8 +304,12 @@ public class Gerenciamento {
         System.out.println("Lista de veículos cadastrados: ");
         System.out.println("===============================");
 
-        for (int i = 0; i < listaVeiculos.size(); i++) {
-            System.out.println((i + 1) + " ===== " + listaVeiculos.get(i).exibirModeloPlacaDono());
+        if (listaVeiculos.isEmpty()) {
+            System.out.println("ERRO: Nenhum veículo cadastrado!");
+        } else {
+            for (int i = 0; i < listaVeiculos.size(); i++) {
+                System.out.println((i + 1) + " ===== " + listaVeiculos.get(i).exibirModeloPlacaDono());
+            }
         }
     }
 
@@ -238,8 +317,12 @@ public class Gerenciamento {
         System.out.println("Lista de serviços cadastrados: ");
         System.out.println("===============================");
 
-        for (int i = 0; i < listaServicos.size(); i++) {
-            System.out.println((i + 1) + " ===== " + listaServicos.get(i).exibirNomePrecoDuracao());
+        if (listaServicos.isEmpty()) {
+            System.out.println("ERRO: Nenhum serviço cadastrado!");
+        } else {
+            for (int i = 0; i < listaServicos.size(); i++) {
+                System.out.println((i + 1) + " ===== " + listaServicos.get(i).exibirNomePrecoDuracao());
+            }
         }
     }
 
@@ -247,8 +330,12 @@ public class Gerenciamento {
         System.out.println("Lista de agendamentos cadastrados: ");
         System.out.println("===================================");
 
-        for (int i = 0; i < listaAgendamentos.size(); i++) {
-            System.out.println((i + 1) + " ===== " + listaAgendamentos.get(i).exibirClienteServicoStatus());
+        if (listaAgendamentos.isEmpty()) {
+            System.out.println("ERRO: Nenhum agendamento cadastrado!");
+        } else {
+            for (int i = 0; i < listaAgendamentos.size(); i++) {
+                System.out.println((i + 1) + " ===== " + listaAgendamentos.get(i).exibirClienteServicoStatus());
+            }
         }
     }
 
@@ -453,7 +540,7 @@ public class Gerenciamento {
             System.out.println("Menu: ");
             System.out.println("1 - Cadastros");
             System.out.println("2 - Listagens");
-            System.out.println("4 - Agendamentos");
+            System.out.println("3 - Agendamentos");
             System.out.println("4 - Remoções");
             System.out.println("5 - Sair");
 
@@ -484,5 +571,6 @@ public class Gerenciamento {
                     break;
             }
         }
+        scanner.close();
     }
 }

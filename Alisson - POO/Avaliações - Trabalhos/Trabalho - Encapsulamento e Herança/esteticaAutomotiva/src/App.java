@@ -1,9 +1,7 @@
-import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         // importando Objetos
-        Scanner scanner = new Scanner(System.in);
         Gerenciamento gerenciamento = new Gerenciamento();
 
         // area reservada para testes
@@ -46,11 +44,9 @@ public class App {
         gerenciamento.listaAgendamentos.add(a3);
         // fim da area reservada para testes
 
-        
         System.out.println("Bem-Vindo ao Sistema de Agendamentos de Estética Automotiva");
         System.out.println("===========================================================");
 
         gerenciamento.exibirMenuPrincipal();
-
     }
 }

@@ -4,4 +4,5 @@ Sistema de Agendamentos para Estetica Automotiva
 
 Classe Pai: Pessoa
 Classes filhas: Funcionario e Cliente
-Classes extras: Veiculo, serviço, agendamento
+Classes extras: Veiculo, Servico, Agendamento
+Classe Gerenciamento: onde guardo os métodos e a lógica principal do sistema 
