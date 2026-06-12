@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Gerenciamento {
-    // criando arrayLists e scanner
+    // instanciando scanner e as lists
     Scanner scanner = new Scanner(System.in);
     List<Cliente> listaClientes = new ArrayList<>();
     List<Funcionario> listaFuncionarios = new ArrayList<>();
@@ -11,24 +11,60 @@ public class Gerenciamento {
     List<Agendamento> listaAgendamentos = new ArrayList<>();
     List<Veiculo> listaVeiculos = new ArrayList<>();
 
-    // adicionar mais validações
+    // criando os metodos
+    // cadastros
 
     public void cadastrarCliente(Scanner scanner) {
         System.out.println("Cadastro de Cliente");
         System.out.println("===================");
 
-        System.out.println("Digite o nome: ");
-        
-        String nomeDigitado = scanner.nextLine();
+        String nomeDigitado;
 
-        System.out.println("Digite o CPF: ");
-        String cpfDigitado = scanner.nextLine();
+        do {
+            System.out.print("Digite o nome: ");
+            nomeDigitado = scanner.nextLine();
 
-        System.out.println("Digite o telefone: ");
-        String telefoneDigitado = scanner.nextLine();
+            if (nomeDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O nome não pode ficar vazio.");
+            }
 
-        System.out.println("Digite o endereço: ");
-        String enderecoDigitado = scanner.nextLine();
+        } while (nomeDigitado.trim().isEmpty());
+
+        String cpfDigitado;
+
+        do {
+            System.out.print("Digite o CPF: ");
+            cpfDigitado = scanner.nextLine();
+
+            if (cpfDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O CPF não pode ficar vazio.");
+            }
+
+        } while (cpfDigitado.trim().isEmpty());
+
+        String telefoneDigitado;
+
+        do {
+            System.out.print("Digite o telefone: ");
+            telefoneDigitado = scanner.nextLine();
+
+            if (telefoneDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O telefone não pode ficar vazio.");
+            }
+
+        } while (telefoneDigitado.trim().isEmpty());
+
+        String enderecoDigitado;
+
+        do {
+            System.out.print("Digite o endereço: ");
+            enderecoDigitado = scanner.nextLine();
+
+            if (enderecoDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O endereço não pode ficar vazio.");
+            }
+
+        } while (enderecoDigitado.trim().isEmpty());
 
         System.out.println("====================");
         System.out.println("Deseja concluir o cadastro?");
@@ -37,6 +73,8 @@ public class Gerenciamento {
 
         System.out.println("====================");
         int cadastrarSimNao = scanner.nextInt();
+        scanner.nextLine();
+
         if (cadastrarSimNao == 1) {
             Cliente cliente = new Cliente(nomeDigitado, cpfDigitado, telefoneDigitado, enderecoDigitado);
             listaClientes.add(cliente);
@@ -50,20 +88,65 @@ public class Gerenciamento {
         System.out.println("Cadastro de Funcionário");
         System.out.println("=======================");
 
-        System.out.println("Digite o nome: ");
-        String nomeDigitado = scanner.nextLine();
+        String nomeDigitado;
 
-        System.out.println("Digite o CPF: ");
-        String cpfDigitado = scanner.nextLine();
+        do {
+            System.out.print("Digite o nome: ");
+            nomeDigitado = scanner.nextLine();
 
-        System.out.println("Digite o telefone: ");
-        String telefoneDigitado = scanner.nextLine();
+            if (nomeDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O nome não pode ficar vazio.");
+            }
 
-        System.out.println("Digite o cargo: ");
-        String cargoDigitado = scanner.nextLine();
+        } while (nomeDigitado.trim().isEmpty());
 
-        System.out.println("Digite o salário: ");
-        double salarioDigitado = scanner.nextDouble();
+        String cpfDigitado;
+
+        do {
+            System.out.print("Digite o CPF: ");
+            cpfDigitado = scanner.nextLine();
+
+            if (cpfDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O CPF não pode ficar vazio.");
+            }
+
+        } while (cpfDigitado.trim().isEmpty());
+
+        String telefoneDigitado;
+
+        do {
+            System.out.print("Digite o telefone: ");
+            telefoneDigitado = scanner.nextLine();
+
+            if (telefoneDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O telefone não pode ficar vazio.");
+            }
+
+        } while (telefoneDigitado.trim().isEmpty());
+
+        String cargoDigitado;
+
+        do {
+            System.out.println("Digite o cargo: ");
+            cargoDigitado = scanner.nextLine();
+
+            if (cargoDigitado.trim().isEmpty()) {
+                System.out.println("ERRO: O cargo não pode ficar vazio.");
+            }
+
+        } while (cargoDigitado.trim().isEmpty());
+
+        double salarioDigitado;
+
+        do {
+            System.out.print("Digite o salário: ");
+            salarioDigitado = scanner.nextDouble();
+
+            if (salarioDigitado <= 0) {
+                System.out.println("ERRO: O salário deve ser maior que zero.");
+            }
+
+        } while (salarioDigitado <= 0);
 
         System.out.println("====================");
         System.out.println("Deseja concluir o cadastro?");
@@ -74,9 +157,10 @@ public class Gerenciamento {
         int cadastrarSimNao = scanner.nextInt();
 
         if (cadastrarSimNao == 1) {
-            Funcionario funcionario = new Funcionario(nomeDigitado, cpfDigitado, telefoneDigitado, cargoDigitado, salarioDigitado);
+            Funcionario funcionario = new Funcionario(nomeDigitado, cpfDigitado, telefoneDigitado, cargoDigitado,
+                    salarioDigitado);
             listaFuncionarios.add(funcionario);
-        
+
             System.out.println("Cadastro concluído.");
         } else {
             System.out.println("Cadastro cancelado.");
@@ -93,8 +177,29 @@ public class Gerenciamento {
         System.out.println("Digite o modelo: ");
         String modeloDigitado = scanner.nextLine();
 
-        System.out.println("Digite a placa: ");
-        String placaDigitada = scanner.nextLine();
+        String placaDigitada;
+        boolean placaExiste;
+
+        do {
+            System.out.println("Digite a placa: ");
+            placaDigitada = scanner.nextLine();
+
+            placaExiste = false;
+
+            if (placaDigitada.trim().isEmpty()) {
+                System.out.println("ERRO: A placa não pode ficar vazia.");
+                continue;
+            }
+
+            for (Veiculo veiculo : listaVeiculos) {
+                if (veiculo.getPlaca().equalsIgnoreCase(placaDigitada)) {
+                    placaExiste = true;
+                    System.out.println("ERRO: Já existe um veículo com essa placa.");
+                    break;
+                }
+            }
+
+        } while (placaDigitada.trim().isEmpty() || placaExiste);
 
         System.out.println("De quem é o veículo?");
         listarClientes();
@@ -151,6 +256,8 @@ public class Gerenciamento {
         }
     }
 
+    // agendar, concluir, cancelar
+
     public void agendarServico(Scanner scanner) {
         System.out.println("Agendamento de Serviço");
         System.out.println("======================");
@@ -163,9 +270,31 @@ public class Gerenciamento {
         System.out.println("======================");
 
         System.out.println("Qual o veículo? ");
-        listarVeiculos();
+
+        // Lista temporária para guardar apenas os veículos do cliente escolhido
+        List<Veiculo> veiculosDoCliente = new ArrayList<>();
+
+        for (Veiculo veiculo : listaVeiculos) {
+
+            if (veiculo.getDono().equals(clienteSelecionado)) {
+
+                veiculosDoCliente.add(veiculo);
+
+                System.out.println(
+                        veiculosDoCliente.size() +
+                                " - " +
+                                veiculo.exibirModeloPlacaDono());
+            }
+        }
+
+        if (veiculosDoCliente.isEmpty()) {
+            System.out.println("Este cliente não possui veículos cadastrados.");
+            return;
+        }
+
         int opcaoVeiculo = scanner.nextInt();
-        Veiculo veiculoSelecionado = listaVeiculos.get(opcaoVeiculo - 1);
+
+        Veiculo veiculoSelecionado = veiculosDoCliente.get(opcaoVeiculo - 1);
 
         System.out.println("======================");
 
@@ -190,7 +319,7 @@ public class Gerenciamento {
 
         System.out.println("====================");
         int cadastrarSimNao = scanner.nextInt();
-        
+
         if (cadastrarSimNao == 1) {
             Agendamento agendamento = new Agendamento(clienteSelecionado, veiculoSelecionado, servicoSelecionado,
                     statusPadrao, horarioDigitado, dataDigitada);
@@ -226,6 +355,8 @@ public class Gerenciamento {
 
         System.out.println("Agendamento cancelado!");
     }
+
+    // remoções
 
     public void removerCliente(Scanner scanner) {
         System.out.println("Remover cliente");
@@ -271,8 +402,7 @@ public class Gerenciamento {
         System.out.println("Serviço removido!");
     }
 
-    // adicionar um if else nas listagens, caso a lista esteja vazia,
-    // if(listaDados.isEmpty()) - mostrar erro, else - mostrar os dados
+    // listagens
 
     public void listarClientes() {
         System.out.println("Lista de clientes cadastrados: ");
@@ -338,6 +468,8 @@ public class Gerenciamento {
             }
         }
     }
+
+    // menus
 
     public void exibirMenuCadastros() {
 
