@@ -472,52 +472,60 @@ public class Gerenciamento {
     // buscas
 
     public void buscarCliente(Scanner scanner) {
-        System.out.println("Buscar Cliente");
-        System.out.println("==============");
+    System.out.println("Buscar Cliente");
+    System.out.println("==============");
 
-        System.out.println("Digite o nome do cliente que deseja buscar:");
-        String nomeBusca = scanner.nextLine();
+    System.out.println("Digite o nome do cliente que deseja buscar:");
+    String nomeBusca = scanner.nextLine();
 
-        boolean encontrado = false;
+    System.out.println("\nResultados para: " + nomeBusca);
+    System.out.println("========================");
 
-        for (Cliente cliente : listaClientes) {
+    boolean encontrado = false;
 
-            if (cliente.getNome().equalsIgnoreCase(nomeBusca)) {
+    for (Cliente cliente : listaClientes) {
 
-                System.out.println(cliente.exibirDadosCompleto());
-                encontrado = true;
-            }
+        if (cliente.getNome().toLowerCase().contains(nomeBusca.toLowerCase())) {
 
+            System.out.println(cliente.exibirDadosCompleto());
+            System.out.println("------------------------");
+            encontrado = true;
         }
 
-        if (!encontrado) {
-            System.out.println("ERRO: Cliente não encontrado!");
-        }
     }
+
+    if (!encontrado) {
+        System.out.println("ERRO: Cliente não encontrado!");
+    }
+}
 
     public void buscarVeiculo(Scanner scanner) {
-        System.out.println("Buscar Veículo");
-        System.out.println("==============");
+    System.out.println("Buscar Veículo");
+    System.out.println("==============");
 
-        System.out.println("Digite a placa: ");
-        String placaBusca = scanner.nextLine();
+    System.out.println("Digite a placa:");
+    String placaBusca = scanner.nextLine();
 
-        boolean encontrado = false;
+    System.out.println("\nResultados para: " + placaBusca);
+    System.out.println("========================");
 
-        for (Veiculo veiculo : listaVeiculos) {
+    boolean encontrado = false;
 
-            if (veiculo.getPlaca().equalsIgnoreCase(placaBusca)) {
+    for (Veiculo veiculo : listaVeiculos) {
 
-                System.out.println(veiculo.exibirModeloPlacaDono());
-                encontrado = true;
-            }
+        if (veiculo.getPlaca().toLowerCase().contains(placaBusca.toLowerCase())) {
 
+            System.out.println(veiculo.exibirModeloPlacaDono());
+            System.out.println("------------------------");
+            encontrado = true;
         }
 
-        if (!encontrado) {
-            System.out.println("ERRO: Veículo não encontrado!");
-        }
     }
+
+    if (!encontrado) {
+        System.out.println("ERRO: Veículo não encontrado!");
+    }
+}
 
     // menus
 
