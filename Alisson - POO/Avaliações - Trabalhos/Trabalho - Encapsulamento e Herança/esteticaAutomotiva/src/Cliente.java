@@ -22,12 +22,12 @@ public class Cliente extends Pessoa {
         }
     }
 
-    public String exibirNomeCpf() {
-        return "\nNome: " + getNome() + "\nCPF: " + getCpf();
+    public String exibirNomeCpfTelefone() {
+        return "Nome: " + getNome() + "\nCPF: " + getCpf() + "\nTelefone: " + getTelefone();
     }
 
     public String exibirDadosCompleto() {
-        return "\nNome: " + getNome() + "\nCPF: " + getCpf() + "\nTelefone: " + getTelefone() + "\nEndereço: " + endereco;
+        return "Nome: " + getNome() + "\nCPF: " + getCpf() + "\nTelefone: " + getTelefone() + "\nEndereço: " + endereco;
     }
 
 }

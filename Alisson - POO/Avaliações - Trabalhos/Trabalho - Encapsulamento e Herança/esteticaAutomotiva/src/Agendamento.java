@@ -70,7 +70,7 @@ public class Agendamento {
     }
 
     public String exibirClienteServicoStatus() {
-        return "\nCliente: " + cliente.exibirNomeCpf() + "\nServiço: " + servico.exibirNomePrecoDuracao() + "\nStatus: " + status;
+        return "\nCliente: " + cliente.exibirNomeCpfTelefone() + "\nServiço: " + servico.exibirNomePrecoDuracao() + "\nStatus: " + status;
     }
 
 

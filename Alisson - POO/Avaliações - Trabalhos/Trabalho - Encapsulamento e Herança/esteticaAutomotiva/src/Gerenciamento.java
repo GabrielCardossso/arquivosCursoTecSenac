@@ -412,7 +412,7 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum cliente cadastrado!");
         } else {
             for (int i = 0; i < listaClientes.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaClientes.get(i).exibirNomeCpf());
+                System.out.println((i + 1) + " ===== " + listaClientes.get(i).exibirNomeCpfTelefone());
             }
         }
     }
