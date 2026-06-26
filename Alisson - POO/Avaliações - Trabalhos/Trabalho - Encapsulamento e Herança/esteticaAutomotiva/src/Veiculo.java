@@ -49,17 +49,21 @@ public class Veiculo {
             this.placa = placa;
         }
     }
-    
+
     public Cliente getDono() {
         return dono;
     }
-    
+
     public void setDono(Cliente dono) {
         this.dono = dono;
     }
-    
+
     public String exibirModeloPlacaDono() {
         return "\nModelo: " + modelo + "\nPlaca: " + placa + "\nDono: " + dono.getNome();
     }
-    
+
+    public String exibir() {
+        return "Marca: " + marca + "\nModelo: " + modelo + "\nPlaca: " + placa + "\nDono: " + dono.getNome();
+    }
+
 }

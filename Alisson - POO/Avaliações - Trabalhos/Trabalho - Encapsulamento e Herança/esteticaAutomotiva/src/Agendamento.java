@@ -1,5 +1,4 @@
 
-
 public class Agendamento {
     private Cliente cliente;
     private Veiculo veiculo;
@@ -69,9 +68,9 @@ public class Agendamento {
         this.data = data;
     }
 
-    public String exibirClienteServicoStatus() {
-        return "\nCliente: " + cliente.exibirNomeCpfTelefone() + "\nServiço: " + servico.exibirNomePrecoDuracao() + "\nStatus: " + status;
+    public String exibir() {
+        return "Data: " + data + "\nHorário: " + horario + "\n" + cliente.exibir() + "\nVeículo: "
+                + veiculo.getPlaca() + "\nServiço: " + servico.getNome() + "\nStatus: " + status;
     }
-
 
 }

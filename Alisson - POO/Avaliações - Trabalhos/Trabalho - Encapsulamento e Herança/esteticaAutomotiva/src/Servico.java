@@ -57,8 +57,9 @@ public class Servico {
         }
     }
 
-    public String exibirNomePrecoDuracao() {
-        return "\nNome: " + nome + "\nPreço: " + preco + "\nDuração (em minutos): " + duracao; 
+    public String exibir() {
+        return "Nome: " + nome + "\nDescrição: " + descrição + "\nPreço: R$ " + String.format("%.2f", preco)
+                + "\nDuração: " + duracao + " minutos";
     }
 
 }

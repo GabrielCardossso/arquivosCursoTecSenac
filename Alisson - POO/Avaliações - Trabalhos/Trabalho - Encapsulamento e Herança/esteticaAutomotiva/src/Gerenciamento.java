@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -136,17 +137,25 @@ public class Gerenciamento {
 
         } while (cargoDigitado.trim().isEmpty());
 
-        double salarioDigitado;
+        double salarioDigitado = -1;
 
         do {
-            System.out.print("Digite o salário: ");
-            salarioDigitado = scanner.nextDouble();
 
-            if (salarioDigitado <= 0) {
-                System.out.println("ERRO: O salário deve ser maior que zero.");
-            }
+    try {
+        System.out.print("Digite o salário: ");
+        salarioDigitado = scanner.nextDouble();
 
-        } while (salarioDigitado <= 0);
+        if (salarioDigitado <= 0) {
+            System.out.println("ERRO: O salário deve ser maior que zero.");
+        }
+
+    } catch (InputMismatchException e) {
+        System.out.println("ERRO: Digite um número válido.");
+        scanner.nextLine(); // Limpa a entrada inválida
+        salarioDigitado = -1; // Garante que o loop continue
+    }
+
+} while (salarioDigitado <= 0);
 
         System.out.println("====================");
         System.out.println("Deseja concluir o cadastro?");
@@ -359,49 +368,49 @@ public class Gerenciamento {
     // remoções
 
     public void removerCliente(Scanner scanner) {
-    System.out.println("Remover Cliente");
-    System.out.println("===============");
+        System.out.println("Remover Cliente");
+        System.out.println("===============");
 
-    if (listaClientes.isEmpty()) {
-        System.out.println("ERRO: Nenhum cliente cadastrado!");
-        return;
-    }
-
-    System.out.println("Escolha um cliente para remover:");
-    listarClientes();
-
-    int opcaoRemocao = scanner.nextInt();
-
-    if (opcaoRemocao < 1 || opcaoRemocao > listaClientes.size()) {
-        System.out.println("ERRO: Cliente inválido.");
-        return;
-    }
-
-    Cliente clienteRemovido = listaClientes.get(opcaoRemocao - 1);
-
-    // veiculo
-    for (int i = listaVeiculos.size() - 1; i >= 0; i--) {
-
-        if (listaVeiculos.get(i).getDono().equals(clienteRemovido)) {
-
-            listaVeiculos.remove(i);
+        if (listaClientes.isEmpty()) {
+            System.out.println("ERRO: Nenhum cliente cadastrado!");
+            return;
         }
-    }
 
-    // agendamento
-    for (int i = listaAgendamentos.size() - 1; i >= 0; i--) {
+        System.out.println("Escolha um cliente para remover:");
+        listarClientes();
 
-        if (listaAgendamentos.get(i).getCliente().equals(clienteRemovido)) {
+        int opcaoRemocao = scanner.nextInt();
 
-            listaAgendamentos.remove(i);
+        if (opcaoRemocao < 1 || opcaoRemocao > listaClientes.size()) {
+            System.out.println("ERRO: Cliente inválido.");
+            return;
         }
+
+        Cliente clienteRemovido = listaClientes.get(opcaoRemocao - 1);
+
+        // veiculo
+        for (int i = listaVeiculos.size() - 1; i >= 0; i--) {
+
+            if (listaVeiculos.get(i).getDono().equals(clienteRemovido)) {
+
+                listaVeiculos.remove(i);
+            }
+        }
+
+        // agendamento
+        for (int i = listaAgendamentos.size() - 1; i >= 0; i--) {
+
+            if (listaAgendamentos.get(i).getCliente().equals(clienteRemovido)) {
+
+                listaAgendamentos.get(i).setStatus("Cancelado, o cliente e/ou veículo não existe ou foi apagado.");
+            }
+        }
+
+        // cliente
+        listaClientes.remove(opcaoRemocao - 1);
+
+        System.out.println("Cliente removido com sucesso!");
     }
-
-    // cliente
-    listaClientes.remove(opcaoRemocao - 1);
-
-    System.out.println("Cliente removido com sucesso!");
-}
 
     public void removerFuncionario(Scanner scanner) {
         System.out.println("Remover funcionário");
@@ -446,7 +455,8 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum cliente cadastrado!");
         } else {
             for (int i = 0; i < listaClientes.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaClientes.get(i).exibirNomeCpfTelefone());
+                System.out.println((i + 1) + ": " + "\n" + listaClientes.get(i).exibir());
+                System.out.println("\n");
             }
         }
     }
@@ -459,7 +469,8 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum funcionário cadastrado!");
         } else {
             for (int i = 0; i < listaFuncionarios.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaFuncionarios.get(i).exibirNomeCpf());
+                System.out.println((i + 1) + ": " + "\n" + listaFuncionarios.get(i).exibir());
+                System.out.println("\n");
             }
         }
     }
@@ -472,7 +483,8 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum veículo cadastrado!");
         } else {
             for (int i = 0; i < listaVeiculos.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaVeiculos.get(i).exibirModeloPlacaDono());
+                System.out.println((i + 1) + ": " + "\n" + listaVeiculos.get(i).exibir());
+                System.out.println("\n");
             }
         }
     }
@@ -485,7 +497,8 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum serviço cadastrado!");
         } else {
             for (int i = 0; i < listaServicos.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaServicos.get(i).exibirNomePrecoDuracao());
+                System.out.println((i + 1) + ": " + "\n" + listaServicos.get(i).exibir());
+                System.out.println("\n");
             }
         }
     }
@@ -498,7 +511,8 @@ public class Gerenciamento {
             System.out.println("ERRO: Nenhum agendamento cadastrado!");
         } else {
             for (int i = 0; i < listaAgendamentos.size(); i++) {
-                System.out.println((i + 1) + " ===== " + listaAgendamentos.get(i).exibirClienteServicoStatus());
+                System.out.println((i + 1) + ": " + "\n" + listaAgendamentos.get(i).exibir());
+                System.out.println("\n");
             }
         }
     }
@@ -506,60 +520,60 @@ public class Gerenciamento {
     // buscas
 
     public void buscarCliente(Scanner scanner) {
-    System.out.println("Buscar Cliente");
-    System.out.println("==============");
+        System.out.println("Buscar Cliente");
+        System.out.println("==============");
 
-    System.out.println("Digite o nome do cliente que deseja buscar:");
-    String nomeBusca = scanner.nextLine();
+        System.out.println("Digite o nome do cliente que deseja buscar:");
+        String nomeBusca = scanner.nextLine();
 
-    System.out.println("\nResultados para: " + nomeBusca);
-    System.out.println("========================");
+        System.out.println("\nResultados para: " + nomeBusca);
+        System.out.println("========================");
 
-    boolean encontrado = false;
+        boolean encontrado = false;
 
-    for (Cliente cliente : listaClientes) {
+        for (Cliente cliente : listaClientes) {
 
-        if (cliente.getNome().toLowerCase().contains(nomeBusca.toLowerCase())) {
+            if (cliente.getNome().toLowerCase().contains(nomeBusca.toLowerCase())) {
 
-            System.out.println(cliente.exibirDadosCompleto());
-            System.out.println("------------------------");
-            encontrado = true;
+                System.out.println(cliente.exibir());
+                System.out.println("------------------------");
+                encontrado = true;
+            }
+
         }
 
+        if (!encontrado) {
+            System.out.println("ERRO: Cliente não encontrado!");
+        }
     }
-
-    if (!encontrado) {
-        System.out.println("ERRO: Cliente não encontrado!");
-    }
-}
 
     public void buscarVeiculo(Scanner scanner) {
-    System.out.println("Buscar Veículo");
-    System.out.println("==============");
+        System.out.println("Buscar Veículo");
+        System.out.println("==============");
 
-    System.out.println("Digite a placa:");
-    String placaBusca = scanner.nextLine();
+        System.out.println("Digite a placa:");
+        String placaBusca = scanner.nextLine();
 
-    System.out.println("\nResultados para: " + placaBusca);
-    System.out.println("========================");
+        System.out.println("\nResultados para: " + placaBusca);
+        System.out.println("========================");
 
-    boolean encontrado = false;
+        boolean encontrado = false;
 
-    for (Veiculo veiculo : listaVeiculos) {
+        for (Veiculo veiculo : listaVeiculos) {
 
-        if (veiculo.getPlaca().toLowerCase().contains(placaBusca.toLowerCase())) {
+            if (veiculo.getPlaca().toLowerCase().contains(placaBusca.toLowerCase())) {
 
-            System.out.println(veiculo.exibirModeloPlacaDono());
-            System.out.println("------------------------");
-            encontrado = true;
+                System.out.println(veiculo.exibir());
+                System.out.println("------------------------");
+                encontrado = true;
+            }
+
         }
 
+        if (!encontrado) {
+            System.out.println("ERRO: Veículo não encontrado!");
+        }
     }
-
-    if (!encontrado) {
-        System.out.println("ERRO: Veículo não encontrado!");
-    }
-}
 
     // menus
 

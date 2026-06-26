@@ -35,8 +35,10 @@ public class Funcionario extends Pessoa {
         }
     }
 
-    public String exibirNomeCpf() {
-        return "\nNome: " + getNome() + "\nCPF: " + getCpf();
+    @Override
+    public String exibir() {
+        return "Nome do funcionário: " + getNome() + "\nCPF: " + getCpf() + "\nCargo: " + cargo + "\nSalário: R$ "
+                + String.format("%.2f", salario);
     }
 
 }
