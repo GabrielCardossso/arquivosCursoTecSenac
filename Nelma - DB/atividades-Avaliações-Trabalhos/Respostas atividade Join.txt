@@ -1,0 +1,43 @@
+Respostas atividade Join
+
+1) Diferença entre INNER, LEFT e RIGHT JOIN
+
+A função do INNER JOIN consiste em juntar e exibir os dados de duas tabelas que possuem relacionamento entre si, mostrando apenas os registros que possuem correspondência em todas as tabelas envolvidas. Um exemplo seria uma tabela de clientes e uma tabela de veículos, onde cada veículo possui um cliente_id. Nesse caso, o INNER JOIN exibirá apenas os veículos que possuem um cliente associado. Se existir apenas o cliente ou apenas o veículo, o registro não será exibido.
+
+O LEFT JOIN garante que todos os registros da tabela à esquerda sejam exibidos. Caso não exista correspondência na tabela da direita, os campos referentes a ela serão preenchidos com valores NULL. Diferentemente do INNER JOIN, os registros da tabela principal continuam sendo exibidos mesmo sem correspondência.
+
+O RIGHT JOIN funciona de forma semelhante ao LEFT JOIN, porém garante que todos os registros da tabela à direita sejam exibidos. Caso não exista correspondência na tabela da esquerda, os campos referentes a ela serão preenchidos com valores NULL.
+
+Ref: https://www.w3schools.com/postgresql/
+
+2) LEFT JOIN vs RIGHT JOIN
+
+A diferença entre eles é que:
+
+LEFT JOIN: exibe todos os registros da tabela à esquerda e, caso não exista correspondência na tabela da direita, retorna NULL.
+RIGHT JOIN: exibe todos os registros da tabela à direita e, caso não exista correspondência na tabela da esquerda, retorna NULL.
+
+Ref: https://www.w3schools.com/postgresql/
+
+Dependendo da situação, eles podem retornar os mesmos dados. A principal diferença está em qual tabela será considerada a principal na consulta, ou seja, qual delas terá todos os seus registros garantidos no resultado.
+
+O LEFT JOIN é mais utilizado do que o RIGHT JOIN porque costuma ser mais intuitivo durante a escrita e leitura das consultas. Em muitos casos, quando seria necessário utilizar um RIGHT JOIN, basta inverter a ordem das tabelas e utilizar um LEFT JOIN, mantendo o mesmo resultado.
+
+Ref: meu irmão, que trabalha na área, comentou isso comigo em uma conversa, e durante atividades realizadas em sala de aula também percebi que essa abordagem é mais intuitiva.
+
+3) Outros tipos de JOIN
+
+Sim, existem outros tipos de JOIN além do INNER, LEFT e RIGHT. Entre eles estão o FULL JOIN e o CROSS JOIN.
+
+CROSS JOIN: realiza todas as combinações possíveis entre os registros das tabelas. Por exemplo, se a tabela A possui 10 registros, e a tabela B possui 5 registros, o resultado retornará 50 registros. É importante ter cuidado ao utilizá-lo, pois pode gerar uma quantidade muito grande de resultados.
+FULL JOIN: retorna todos os registros das duas tabelas. Quando uma linha da tabela 1 não possui correspondência na tabela 2, os campos da tabela 2 são preenchidos com NULL. Da mesma forma, quando uma linha da tabela 2 não possui correspondência na tabela 1, os campos da tabela 1 são preenchidos com NULL.
+
+Ref: https://www.postgresql.org/docs/current/queries-table-expressions.html
+
+4) JOINs e SGBDs
+
+Não. Nem todos os SGBDs suportam todos os tipos de JOIN da mesma forma ou de maneira nativa (MySQL não suporta alguns destes tipos). Os tipos mais amplamente suportados são o INNER JOIN, LEFT JOIN e CROSS JOIN.
+
+Sim. O PostgreSQL é um dos SGBDs mais completos em relação aos JOINs e suporta todos os tipos citados, incluindo INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN e CROSS JOIN.
+
+OBS: Utilizei a ferramenta Claude IA para reescrita do texto, para conseguir me expressar melhor e sem alterar o que foi escrito originalmente.

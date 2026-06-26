@@ -21,6 +21,8 @@ public class SelectionSort {
             int temp = array[i];
             array[i] = array[menor];
             array[menor] = temp;
+            System.out.println("==========================");
+            System.out.println("Lista ordenada com sucesso!");
         }
     }
 

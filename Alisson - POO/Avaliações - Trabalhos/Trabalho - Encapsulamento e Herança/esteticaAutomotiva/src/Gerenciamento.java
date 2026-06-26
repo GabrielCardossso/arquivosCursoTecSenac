@@ -359,15 +359,49 @@ public class Gerenciamento {
     // remoções
 
     public void removerCliente(Scanner scanner) {
-        System.out.println("Remover cliente");
-        System.out.println("===============");
+    System.out.println("Remover Cliente");
+    System.out.println("===============");
 
-        System.out.println("Escolha um cliente para remover: ");
-        listarClientes();
-        int opcaoRemocao = scanner.nextInt();
-        listaClientes.remove(opcaoRemocao - 1);
-        System.out.println("Cliente removido!");
+    if (listaClientes.isEmpty()) {
+        System.out.println("ERRO: Nenhum cliente cadastrado!");
+        return;
     }
+
+    System.out.println("Escolha um cliente para remover:");
+    listarClientes();
+
+    int opcaoRemocao = scanner.nextInt();
+
+    if (opcaoRemocao < 1 || opcaoRemocao > listaClientes.size()) {
+        System.out.println("ERRO: Cliente inválido.");
+        return;
+    }
+
+    Cliente clienteRemovido = listaClientes.get(opcaoRemocao - 1);
+
+    // veiculo
+    for (int i = listaVeiculos.size() - 1; i >= 0; i--) {
+
+        if (listaVeiculos.get(i).getDono().equals(clienteRemovido)) {
+
+            listaVeiculos.remove(i);
+        }
+    }
+
+    // agendamento
+    for (int i = listaAgendamentos.size() - 1; i >= 0; i--) {
+
+        if (listaAgendamentos.get(i).getCliente().equals(clienteRemovido)) {
+
+            listaAgendamentos.remove(i);
+        }
+    }
+
+    // cliente
+    listaClientes.remove(opcaoRemocao - 1);
+
+    System.out.println("Cliente removido com sucesso!");
+}
 
     public void removerFuncionario(Scanner scanner) {
         System.out.println("Remover funcionário");
